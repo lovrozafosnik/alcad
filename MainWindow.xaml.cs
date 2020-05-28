@@ -28,24 +28,24 @@ namespace WpfApp1
 
          struct rondelica
         {
-            public float x;
+            public float x; //definiranje pozicije za ROND:
             public float y;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            rondelica[] arr = new rondelica[200];
+            rondelica[] arr = new rondelica[200]; //matrika za ROND.
 
-            float razmak = float.Parse(Razmak.Text, CultureInfo.InvariantCulture.NumberFormat);
+            float razmak = float.Parse(Razmak.Text, CultureInfo.InvariantCulture.NumberFormat);         //pretvorba float v int
             float odmik = float.Parse(odmik1.Text, CultureInfo.InvariantCulture.NumberFormat); ;
             float polmer = float.Parse(polmer1.Text, CultureInfo.InvariantCulture.NumberFormat); ;
             float sirinaTrak = float.Parse(sirina.Text, CultureInfo.InvariantCulture.NumberFormat); ;
 
-            float dolznia = 100;
-            int steviloRondelic = 0;
+            float dolznia = 100; //začasna dolžina traku
+            int steviloRondelic = 0; //stevec ROND.
 
-            float premerRondelice = polmer * 2 + razmak;
+            float premerRondelice = polmer * 2 + razmak; //"končni" premer ROND.
 
             int rondelice_po_dolzini = (int)((dolznia - odmik*2)/premerRondelice);
             
@@ -56,25 +56,25 @@ namespace WpfApp1
 
 
 
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < 200; i++)  //postavitev ROND.
             {
-                arr[i].x = Xzacetna;
+                arr[i].x = Xzacetna; //dodelitev koordinata ROND.
                 arr[i].y = Yzacetna;
             }
 
-            int steviloRondelice = 1;
+            int steviloRondelice = 1; 
 
-            for (int i = 0; i<= rondelice_po_sirini; i++)
+            for (int i = 0; i<= rondelice_po_sirini; i++) // zanka za branje po širini
             {
-                for (int j = 1; j <= rondelice_po_dolzini; j++)
+                for (int j = 1; j <= rondelice_po_dolzini; j++) //zanka za branje ROND. po dolžini
                 {
-                    arr[steviloRondelice].x = Xzacetna + ( j* premerRondelice);
-                    arr[steviloRondelice].y = Yzacetna + (i * Yzacetna);
+                    arr[steviloRondelice].x = Xzacetna + ( j* premerRondelice); // računanje koordinatov ROND.
+                    arr[steviloRondelice].y = Yzacetna + (i * Yzacetna); // računanje koordinatov ROND.
                     steviloRondelice++;
                 }
             }
 
-            Label1.Content = arr[2].x;
+            Label1.Content = arr[2].x; //izpis
 
         }
     }
